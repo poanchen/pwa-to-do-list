@@ -1,0 +1,19 @@
+<ons-page id="newTodoPage">
+  <header class="header">
+    <h1 class="header__title">Add new to-do</h1>
+    <button component="button/save-todo-back" aria-label="Back">Back</button>
+  </header>
+  <main class="main">
+    <div class="card cardTemplate weather-forecast">
+      <div class="location">
+        <ons-input id="todo-description" type="text" placeholder="Description" float></ons-input>
+      </div>
+      <div id="todo-date" class="date"></div>
+    </div>
+  </main>
+  <div class="content-padded">
+    <ons-if platform="ios other">
+      <ons-button modifier="large save_todo" component="button/save-todo">Save</ons-button>
+    </ons-if>
+  </div>
+</ons-page>

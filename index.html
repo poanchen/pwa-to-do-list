@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="canonical" href="https://todo.jenrenalcare.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>To-do list</title>
+  <link rel="stylesheet" type="text/css" href="styles/inline.css">
+  <link rel="stylesheet" href="lib/onsen/css/onsenui.css">
+  <link rel="stylesheet" href="lib/onsen/css/onsen-css-components.css">
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+</head>
+<body>
+
+  <ons-navigator id="myNavigator" page="body.html">
+  </ons-navigator>
+
+  <ons-template id="body.html">
+    <ons-splitter id="myBody">
+      <ons-splitter-content page="menu.html">
+      </ons-splitter-content>
+    </ons-splitter>
+  </ons-template>
+
+  <ons-template id="menu.html">
+    <ons-page id="menuPage">
+      <!-- <ons-toolbar> -->
+        <header class="header">
+          <h1 class="header__title">To-do list</h1>
+          <button id="butRefresh" class="headerButton" component="button/refresh" aria-label="Refresh"></button>
+          <button id="butAdd" class="headerButton" component="button/new-todo" aria-label="Add"></button>
+        </header>
+<!--         <div class="left">
+          <ons-toolbar-button component="button/menu">
+            <ons-icon icon="ion-navicon, material:md-menu" size="32px, material:24px"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">To-Do List App 2.0</div>
+        <div class="right">
+          <ons-if platform="ios other">
+            <ons-toolbar-button component="button/new-todo">New</ons-toolbar-button>
+          </ons-if>
+        </div> -->
+      <!-- </ons-toolbar> -->
+        <main class="main">
+        </main>
+    </ons-page>
+  </ons-template>
+
+  <script src="scripts/app.js" async></script>
+  <script src="scripts/services.js" async></script>
+  <script src="scripts/controllers.js" async></script>
+  <script src="scripts/time.js" async></script>
+  <script src="lib/onsen/js/onsenui.js" async></script>
+</body>
+</html>
