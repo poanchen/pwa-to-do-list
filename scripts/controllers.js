@@ -17,11 +17,13 @@ myApp.controllers = {
       element.onclick = function () {
         var description = page.querySelector('#todo-description').value;
         var createDate = page.querySelector('#todo-date').innerHTML;
-        if (description) {
+        if (description && createDate) {
           myApp.services.todos.create(
             {
+              key : null,
               description : description,
-              createDate : createDate
+              createDate : createDate,
+              flag : true
             }
           );
         }
