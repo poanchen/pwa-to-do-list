@@ -37,9 +37,9 @@ myApp.services = {
         createDate: todoCreateDate
       };
       myApp.services.listOfTodos.push(todo);
-      myApp.services.todos.saveToCache();
+      myApp.services.todos.saveListOfTodosToCache();
     },
-    saveToCache: function () {
+    saveListOfTodosToCache: function () {
       // localStorage should not be used as it has performance issue, in production, use indexDB instead
       var listOfTodos = JSON.stringify(myApp.services.listOfTodos);
       localStorage.listOfTodos = listOfTodos;
