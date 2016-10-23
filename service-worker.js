@@ -1,12 +1,12 @@
 var cacheName = 'todoPWA-1';
 var filesToCache = [
-  '/',
-  '/index.html',
-  '/scripts/app.js',
-  '/scripts/controllers.js',
-  '/scripts/services.js',
-  '/scripts/time.js',
-  '/styles/inline.css'
+  '/pwa-to-do-list/',
+  '/pwa-to-do-list/index.html',
+  '/pwa-to-do-list/scripts/app.js',
+  '/pwa-to-do-list/scripts/controllers.js',
+  '/pwa-to-do-list/scripts/services.js',
+  '/pwa-to-do-list/scripts/time.js',
+  '/pwa-to-do-list/styles/inline.css'
 ];
 
 self.addEventListener('install', function(e) {
