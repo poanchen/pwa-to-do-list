@@ -1,12 +1,12 @@
 var cacheName = 'todoPWA-1';
 var filesToCache = [
-  '/upload/pwa-todo-dev-onsen/',
-  '/upload/pwa-todo-dev-onsen/index.html',
-  '/upload/pwa-todo-dev-onsen/scripts/app.js',
-  '/upload/pwa-todo-dev-onsen/scripts/controllers.js',
-  '/upload/pwa-todo-dev-onsen/scripts/services.js',
-  '/upload/pwa-todo-dev-onsen/scripts/time.js',
-  '/upload/pwa-todo-dev-onsen/styles/inline.css'
+  '/',
+  '/index.html',
+  '/scripts/app.js',
+  '/scripts/controllers.js',
+  '/scripts/services.js',
+  '/scripts/time.js',
+  '/styles/inline.css'
 ];
 
 self.addEventListener('install', function(e) {

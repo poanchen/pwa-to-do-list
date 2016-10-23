@@ -1,3 +1,8 @@
+v1.0.3 (2016-10-23)
+======
+
+* Added the service-worker.js, now, in the first load, we will be caching all the js, css, index.html file. So that, in the 2nd load, all the files will be getting from the cache. Which will improve the performance a lot. In addition, since most of our files are grab from the cache. Our web app should now work offline. That means that even if you do not have internet access, you will still be able to access the site. However, this only works if your web browser support service worker.
+
 v1.0.2 (2016-10-15)
 ======
 

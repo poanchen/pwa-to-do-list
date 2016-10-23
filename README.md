@@ -1,4 +1,4 @@
-# pwa-to-do-list
+# pwa-to-do-list v1.0.3
 A Progressive Web App - To-do list.<br><br>
 Try it here: https://poanchen.github.io/pwa-to-do-list/
 
