@@ -1,3 +1,8 @@
+v1.0.4 (2016-11-16)
+======
+
+* Added the fallback to the traditional cursor approach when the getAll isn't supported. openCursor() was used to get cached todo from IndexedDB and list them for user.
+
 v1.0.3 (2016-10-23)
 ======
 

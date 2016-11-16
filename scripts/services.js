@@ -74,8 +74,21 @@ myApp.services = {
             };
           }else{
             // Fallback to the traditional cursor approach if getAll isn't supported.
-            // this will be implement in the future
             // for ref, go to https://googlechrome.github.io/samples/idb-getall/
+            objectStore.openCursor().onsuccess = function(event) {
+              var cursor = event.target.result;
+
+              if (cursor) {
+                var todo = {
+                  key: cursor.value.key,
+                  description: cursor.value.description,
+                  createDate: cursor.value.createDate,
+                  flag: false
+                };
+                myApp.services.todos.create(todo);
+                cursor.continue();
+              }
+            };
           }
         };
       }
