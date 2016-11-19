@@ -128,9 +128,12 @@ myApp.services = {
 
   todos: {
     create: function (data) {
-      // this is okay for now, but in the future we need to change this to something else like
-      // some kind of hashing
-      var todoKey = data.key == null? Math.floor(Math.random()*100000): data.key;
+      var todoKey = data.key;
+      if (todoKey == null) {
+        var desWithMTime = data.description + new Date().getTime();
+        var hashedDesWithMTime = desWithMTime.hashCode();
+        todoKey = hashedDesWithMTime;
+      }
       var todoDescription = data.description;
       var todoCreateDate = data.createDate;
       var flag = data.flag;
