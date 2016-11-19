@@ -1,3 +1,8 @@
+v1.0.5 (2016-11-18)
+======
+
+* Instead of using random number as key. Now, we will be using the hash of the concatenation between the to-do and the time in milliseconds.
+
 v1.0.4 (2016-11-16)
 ======
 
