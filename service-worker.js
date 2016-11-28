@@ -5,6 +5,7 @@ var filesToCache = [
   '/pwa-to-do-list/scripts/app.js',
   '/pwa-to-do-list/scripts/controllers.js',
   '/pwa-to-do-list/scripts/services.js',
+  '/pwa-to-do-list/scripts/hash.js',
   '/pwa-to-do-list/scripts/time.js',
   '/pwa-to-do-list/styles/inline.css'
 ];
