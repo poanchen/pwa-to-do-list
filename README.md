@@ -6,8 +6,8 @@ Try it here: https://poanchen.github.io/pwa-to-do-list
 - [JavaScript](https://www.javascript.com/)
 - [Onsen UI 2](https://onsen.io/)
 - [IndexedDB](https://www.w3.org/TR/IndexedDB/)
-- [LocalStorage](https://www.w3.org/TR/webstorage/#the-localstorage-attribute) (If IndexedDB not available)
-- [Service Workers](https://developers.google.com/web/fundamentals/getting-started/primers/service-workers) (If the browser supports)
+- [LocalStorage](https://www.w3.org/TR/webstorage/#the-localstorage-attribute) (If IndexedDB is not available)
+- [Service Workers](https://developers.google.com/web/fundamentals/getting-started/primers/service-workers) (If the browser supports it)
 
 ## Screenshots
 ![Loading the first image](demo.PNG)
