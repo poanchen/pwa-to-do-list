@@ -123,6 +123,34 @@ myApp.services = {
           }
         }
       }
+    },
+    checkIfTodoIsInCacheIfTrueThenRemove: function (todoKey) {
+      var dbOpenRequest = window.indexedDB.open("newTodoList", 1);
+
+      dbOpenRequest.onsuccess = function(event) {
+        db = dbOpenRequest.result;
+        var transaction = db.transaction(["toDoList"], "readwrite");
+
+        transaction.oncomplete = function() {
+          console.log("oncomplete from checkIfTodoIsInCacheIfTrueThenRemove");
+        };
+
+        transaction.onerror = function() {
+          console.log("onerror from checkIfTodoIsInCacheIfTrueThenRemove");
+        };
+
+        var objectStore = transaction.objectStore("toDoList");
+
+        objectStore.delete(todoKey).onsuccess = function(event) {
+          var result = event.target.result;
+
+          if (typeof result == 'undefined') {
+            console.log("nice...from checkIfTodoIsInCacheIfTrueThenRemove");
+            // this is probably not the best way doing it
+            location.reload();
+          }
+        }
+      }
     }
   },
 
@@ -155,6 +183,16 @@ myApp.services = {
       childDiv2.appendChild(date);
       parentDiv.appendChild(childDiv2);
 
+      var childDiv3 = document.createElement("div");
+      var input = document.createElement('input');
+      input.setAttribute("type", "image");
+      input.setAttribute("id", todoKey);
+      input.onclick = function() { myApp.services.todos.remove(todoKey) };
+      input.setAttribute("src", "images/Actions-edit-delete-icon.png");
+      input.setAttribute("alt", "A delete icon by Oxygen Team");
+      childDiv3.appendChild(input);
+      parentDiv.appendChild(childDiv3);
+
       var main = document.getElementById('main');
       document.querySelector('.main').insertBefore(parentDiv, main.childNodes[0]);
       if (flag) {
@@ -168,6 +206,26 @@ myApp.services = {
       };
       myApp.services.listOfTodos.push(todo);
       myApp.services.db.saveListOfTodosToCache(todo);
+    },
+    remove: function (todoKey) {
+      myApp.services.arrayOperation.remove(todoKey);
+    }
+  },
+
+  arrayOperation: {
+    remove: function (todoKey) {
+      var todo, indexToBeRemoved;
+      var todos = myApp.services.listOfTodos;
+
+      Object.keys(todos).forEach(function (key) {
+        if(todos[key]['key'] == todoKey) {
+          indexToBeRemoved = key;
+        }
+      });
+      todo = todos[indexToBeRemoved];
+      todos.splice(indexToBeRemoved, 1);
+      myApp.services.listOfTodos = todos;
+      myApp.services.db.checkIfTodoIsInCacheIfTrueThenRemove(todo['key']);
     }
   },
 

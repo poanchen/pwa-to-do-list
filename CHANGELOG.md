@@ -1,3 +1,8 @@
+v1.0.6 (2016-12-26)
+======
+
+* User are now able to freely remove the to-do.
+
 v1.0.5 (2016-11-18)
 ======
 
