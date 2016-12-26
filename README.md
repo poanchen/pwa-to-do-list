@@ -1,13 +1,13 @@
 # pwa-to-do-list v1.0.6
 A Progressive Web App - To-do list.<br><br>
-Try it here: https://poanchen.github.io/pwa-to-do-list/
+Try it here: https://poanchen.github.io/pwa-to-do-list
 
 ## Technologies Used
 - [JavaScript](https://www.javascript.com/)
 - [Onsen UI 2](https://onsen.io/)
 - [IndexedDB](https://www.w3.org/TR/IndexedDB/)
-- [LocalStorage](https://www.w3.org/TR/webstorage/#the-localstorage-attribute) (If IndexedDB not available)
-- [Service Workers](https://developers.google.com/web/fundamentals/getting-started/primers/service-workers) (If the browser supports)
+- [LocalStorage](https://www.w3.org/TR/webstorage/#the-localstorage-attribute) (If the IndexedDB is not available)
+- [Service Workers](https://developers.google.com/web/fundamentals/getting-started/primers/service-workers) (If the browser supports it)
 
 ## Screenshots
 ![Loading the first image](demo.PNG)
