@@ -1,3 +1,12 @@
+v1.0.7 (2017-04-15)
+======
+
+* Added many API end point for todos
+* GET:    api/todos      Get all the todos from the DB
+* GET:    api/todos/:key Get the todo with equal key
+* POST:   api/todos      Create a new todo
+* DELETE: api/todos/:key Delete a todo with equal key
+
 v1.0.6 (2016-12-26)
 ======
 

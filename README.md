@@ -1,4 +1,4 @@
-# pwa-to-do-list v1.0.6
+# pwa-to-do-list v1.0.7
 A Progressive Web App - To-do list.<br><br>
 Try it here: https://pwa-to-do-list.herokuapp.com
 
@@ -12,6 +12,7 @@ Try it here: https://pwa-to-do-list.herokuapp.com
 - [Express](https://expressjs.com/)
 - [Gulp](http://gulpjs.com/)
 - [Heroku](https://www.heroku.com/)
+- [Amazon DynamoDB](https://aws.amazon.com/dynamodb/)
 
 ## Screenshots
 ![Loading the first image](demo.PNG)
