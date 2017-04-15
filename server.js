@@ -6,5 +6,5 @@ app.set('port', json.port || 8080)
 app.use(express.static(__dirname + json.root))
 
 app.listen(app.get('port'), function () {
-  console.log(`Example app listening on port ${app.get('port')}!`)
+  console.log(`NodeJS powered app listening on port ${app.get('port')}!`)
 })
