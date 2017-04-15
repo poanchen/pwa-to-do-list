@@ -5,6 +5,7 @@ const uglify     = require('gulp-uglify')
 const deploy     = require('gulp-gh-pages')
 const rename     = require('gulp-rename')
 const copy       = require('gulp-copy')
+const config     = require('./config/config.json')
 
 // minimized all the html files in src folder
 gulp.task('minify-html', function() {
@@ -44,7 +45,7 @@ gulp.task('minify-service-worker-js', function() {
   .pipe(gulp.dest('public'))
 })
 
-// minimized all the css/js files
+// watch all the css/js files changes in the src folder
 gulp.task('watch-all', function() {
   gulp.watch('src/include/*.html', ['minify-html'])
   gulp.watch('src/index.html', ['minify-index-html'])
@@ -74,8 +75,8 @@ gulp.task('copy', function() {
 gulp.task('deploy', ['copy'], function () {
   return gulp.src("./prod/**/*")
     .pipe(deploy({ 
-      remoteUrl: "https://github.com/poanchen/pwa-to-do-list.git",
-      branch: "master"
+      remoteUrl: config.gitRepositoryUrl,
+      branch: config.gitDeployBranch
     }))
 })
 

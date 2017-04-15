@@ -1,4 +1,6 @@
 {
   "port": 3000,
-  "root": "/public"
+  "root": "/public",
+  "gitRepositoryUrl": "https://github.com/poanchen/pwa-to-do-list.git",
+  "gitDeployBranch": "master"
 }
