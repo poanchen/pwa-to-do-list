@@ -1,9 +1,10 @@
-const gulp      = require('gulp')
-const minifyCss = require('gulp-minify-css')
+const gulp       = require('gulp')
+const minifyCss  = require('gulp-minify-css')
 const minifyHtml = require('gulp-minify-html')
-const uglify    = require('gulp-uglify')
-const deploy    = require('gulp-gh-pages')
-const rename    = require('gulp-rename')
+const uglify     = require('gulp-uglify')
+const deploy     = require('gulp-gh-pages')
+const rename     = require('gulp-rename')
+const copy       = require('gulp-copy')
 
 // minimized all the html files in src folder
 gulp.task('minify-html', function() {
@@ -52,8 +53,23 @@ gulp.task('watch-all', function() {
   gulp.watch('src/service-worker.js', ['minify-service-worker-js'])
 })
 
-gulp.task('deploy', function () {
-  return gulp.src("./_site/**/*")
+// copy all the necessary files to prod directory
+gulp.task('copy', function() {
+  const sourceFiles = [
+    'config/*',
+    'Procfile',
+    'public/**/*',
+    'package.json',
+    'server.js']
+  const destination = 'prod/'
+
+  return gulp.src(sourceFiles)
+    .pipe(copy(destination))
+})
+
+// push the codes to the Master branch on GitHub
+gulp.task('deploy', ['copy'], function () {
+  return gulp.src("./prod/**/*")
     .pipe(deploy({ 
       remoteUrl: "https://github.com/poanchen/pwa-to-do-list.git",
       branch: "master"
