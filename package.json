@@ -1,0 +1,31 @@
+{
+  "name": "pwa-to-do-list",
+  "version": "1.0.6",
+  "description": "To-do list - an offline­capable progressive web app that will help user to manage their to­dos.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/poanchen/pwa-to-do-list.git"
+  },
+  "author": "PoAn (Baron)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/poanchen/pwa-to-do-list/issues"
+  },
+  "homepage": "https://github.com/poanchen/pwa-to-do-list#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-gh-pages": "^0.5.4",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-minify-html": "^1.0.6",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.1.2",
+    "nodemon": "^1.11.0"
+  }
+}
