@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/poanchen/pwa-to-do-list#readme",
   "dependencies": {
+    "aws-sdk": "^2.41.0",
+    "body-parser": "^1.17.1",
     "express": "^4.15.2"
   },
   "devDependencies": {

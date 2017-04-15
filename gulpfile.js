@@ -57,6 +57,9 @@ gulp.task('watch-all', function() {
 gulp.task('copy', function() {
   const sourceFiles = [
     'config/*',
+    'controller/*',
+    'service/*',
+    'lib/*',
     'Procfile',
     'public/**/*',
     'package.json',
