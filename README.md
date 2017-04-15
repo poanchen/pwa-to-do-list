@@ -1,6 +1,6 @@
 # pwa-to-do-list v1.0.6
 A Progressive Web App - To-do list.<br><br>
-Try it here: https://poanchen.github.io/pwa-to-do-list
+Try it here: https://pwa-to-do-list.herokuapp.com
 
 ## Technologies Used
 - [JavaScript](https://www.javascript.com/)
