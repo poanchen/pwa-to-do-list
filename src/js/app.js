@@ -29,7 +29,7 @@ document.addEventListener('init', function (event) {
 
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker
-             .register('./service-worker.js')
+             .register('./service-worker.min.js')
              .then(function() { console.log('Service Worker Registered'); });
   }
 });
