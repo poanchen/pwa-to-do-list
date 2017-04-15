@@ -1,70 +1,110 @@
 const time = require('../lib/time')
 const hash = require('../lib/hash')
+const AWS  = require('aws-sdk')
 
-let todos = [
-  {
-    key: -1460539500,
-    description: '1',
-    createDate: 'Fri, 14 Apr 2017 23:40:51'
-  },
-  {
-    key: -955044397,
-    description: '2',
-    createDate: 'Fri, 14 Apr 2017 23:40:48'
-  },
-  {
-    key: -450197754,
-    description: '3',
-    createDate: 'Fri, 14 Apr 2017 23:40:29'
-  }
-]
-
-let list = function() {
-  return todos
+let options = {
+  accessKeyId: process.env.AWS_KEY,
+  secretAccessKey: process.env.AWS_SECRET,
+  region: 'us-west-2'
 }
+let dynamodb = new AWS.DynamoDB(options)
+let tableName = 'todos'
 
-let findByKey = function(key) {
-  let todo = 'Not Found'
+let list = callback => {
+  let params = {
+    TableName: tableName
+  }
 
-  todos.forEach(eachTodo => {
-    if (eachTodo.key == key) {
-      todo = eachTodo
-      return
+  // to-do: scan has poor performance, safer to use query instead
+  dynamodb.scan(params, (err, data) => {
+    if (err || data.Items === undefined || data.Count == 0) {
+      callback([])
+    } else {
+      callback(data.Items)
     }
   })
-
-  return todo
 }
 
-let create = function(description) {
+let findByKey = (key, callback) => {
+  let todo = 'Not Found'
+  let params = {
+    TableName: tableName,
+    Key: {
+      key: {
+        N: key.toString()
+      }
+    }
+  }
+
+  dynamodb.getItem(params, (err, data) => {
+    if (err || data.Item === undefined) {
+      callback(todo)
+    } else {
+      callback(data.Item)
+    }
+  })
+}
+
+let create = (description, callback) => {
+  let status = 'Failed'
   let desWithMTime = description + new Date().getTime()
   let hashedDesWithMTime = hash.getHashCode(desWithMTime)
   let todo = {
-    key: hashedDesWithMTime,
-    description: description,
-    createDate: time.getTime()
+    key: {
+      N: hashedDesWithMTime.toString()
+    },
+    description: {
+      S: description
+    },
+    createDate: {
+      S: time.getTime()
+    }
+  }
+  let params = {
+    TableName: tableName,
+    Item: {
+      key: {
+        N: todo.key.N
+      },
+      description: {
+        S: todo.description.S
+      },
+      createDate: {
+        S: todo.createDate.S
+      }
+    },
+    ReturnConsumedCapacity: 'TOTAL'
   }
 
-  todos.push(todo)
-
-  return todo
-}
-
-let deleteByKey = function(key) {
-  let status = 'Failed'
-  let indexToBeRemoved = 'Not Found'
-
-  todos.forEach((eachTodo, index) => {
-    if (eachTodo.key == key) {
-      indexToBeRemoved = index
-      return
+  dynamodb.putItem(params, (err, data) => {
+    if (err || data.ConsumedCapacity.CapacityUnits != 1) {
+      callback(status)
+    } else {
+      callback(todo)
     }
   })
+}
 
-  if (indexToBeRemoved != 'Not Found') {
-    todos.splice(indexToBeRemoved, 1)
-    status = 'Success'
+let deleteByKey = (key, callback) => {
+  let status = 'Failed'
+  let indexToBeRemoved = 'Not Found'
+  let params = {
+    TableName: tableName,
+    Key: {
+      key: {
+        N: key.toString()
+      }
+    },
+    ReturnConsumedCapacity: 'TOTAL'
   }
+
+  dynamodb.deleteItem(params, (err, data) => {
+    if (err || data.ConsumedCapacity.CapacityUnits != 1) {
+      callback(status)
+    } else {
+      callback('Success')
+    }
+  })
 
   return status
 }
