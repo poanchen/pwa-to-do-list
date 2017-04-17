@@ -1,6 +1,6 @@
 myApp.services = {
   db: {
-    setUp: function (date) {
+    setUp: function(date) {
       window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
       window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
       window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
@@ -29,7 +29,7 @@ myApp.services = {
         console.log("nice, everything went well");
       };
     },
-    saveListOfTodosToCache: function (todo) {
+    saveListOfTodosToCache: function(todo) {
       var listOfTodos = JSON.stringify(myApp.services.listOfTodos);
       
       if (!window.indexedDB) {
@@ -38,13 +38,16 @@ myApp.services = {
         myApp.services.db.checkIfTodoIsInCacheIfNotThenAdd(todo);
       }
     },
-    getListOfTodosFromCache: function () {
+    getListOfTodosFromCache: function() {
       if (!window.indexedDB) {
         return localStorage.listOfTodos;
       }else{
         var dbOpenRequest = window.indexedDB.open("newTodoList", 1);
 
         dbOpenRequest.onsuccess = function(event) {
+
+          console.log('yo');
+
           db = dbOpenRequest.result;
           var transaction = db.transaction(["toDoList"], "readonly");
 
@@ -118,8 +121,17 @@ myApp.services = {
               console.log("nice...from checkIfTodoIsInCacheIfNotThenAdd");
             };
           }else{
-            // this usually happen when the web app starts up in the beginning
-            console.log("already in the cache, no need to add");
+            // check to see if we need an update as the description might changed
+            if (result.description != todo.description) {
+              var updatedTodoRequest = objectStore.put(todo);
+
+              updatedTodoRequest.onsuccess = function() {
+                console.log("successfully updated the todo");
+              };
+            } else {
+              // this usually happen when the web app starts up in the beginning
+              console.log("already in the cache, no need to add/update");
+            }
           }
         }
       }
