@@ -9,10 +9,8 @@ Try it here: https://pwa-to-do-list.herokuapp.com
 - [LocalStorage](https://www.w3.org/TR/webstorage/#the-localstorage-attribute) (If the IndexedDB is not available)
 - [Service Workers](https://developers.google.com/web/fundamentals/getting-started/primers/service-workers) (If the browser supports it)
 - [Node.js](https://nodejs.org/)
-- [Express](https://expressjs.com/)
-- [Gulp](http://gulpjs.com/)
-- [Heroku](https://www.heroku.com/)
-- [Amazon DynamoDB](https://aws.amazon.com/dynamodb/)
+- [Gulp](http://gulpjs.com/) (minimizing the scripts/styles as well as deploying the site to the Master branch)
+- [Amazon DynamoDB](https://aws.amazon.com/dynamodb/) (storing each to-do in a non relational way)
 
 ## Screenshots
 ![Loading the first image](demo.PNG)
