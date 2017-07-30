@@ -1,30 +1,27 @@
 const todosService = require('../service/todos')
+const http         = require('../lib/http')
 
 let list = (req, res) => {
   todosService.list(todos => {
-    res.setHeader('Content-Type', 'application/json')
-    res.send(JSON.stringify({todos: todos}, null, 4))
+    http.buildJSONResponse(res, {todos: todos})
   })
 }
 
 let listByKey = (req, res) => {
   todosService.findByKey(parseInt(req.params.key), todo => {
-    res.setHeader('Content-Type', 'application/json')
-    res.send(JSON.stringify({todo: todo}, null, 4))
+    http.buildJSONResponse(res, {todo: todo})
   })
 }
 
 let create = (req, res) => {
   let todo = todosService.create(req.body.description, todo => {
-    res.setHeader('Content-Type', 'application/json')
-    res.send(JSON.stringify({todo: todo}, null, 4))
+    http.buildJSONResponse(res, {todo: todo})
   })
 }
 
 let deleteByKey = (req, res) => {
   let status = todosService.deleteByKey(parseInt(req.params.key), status => {  
-    res.setHeader('Content-Type', 'application/json')
-    res.send(JSON.stringify({status: status}, null, 4))
+    http.buildJSONResponse(res, {status: status})
   })
 }
 

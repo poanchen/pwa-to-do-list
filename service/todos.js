@@ -87,7 +87,6 @@ let create = (description, callback) => {
 
 let deleteByKey = (key, callback) => {
   let status = 'Failed'
-  let indexToBeRemoved = 'Not Found'
   let params = {
     TableName: tableName,
     Key: {
